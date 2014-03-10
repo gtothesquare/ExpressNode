@@ -1,0 +1,10 @@
+{
+  "name": "my-express-node-boilerplate",
+  "description": "your app description here",
+  "version": "0.0.1",
+  "private": false,
+  "dependencies": {
+    "express": "~3.4.8",
+    "socket.io": "~0.9.16"
+  }
+}

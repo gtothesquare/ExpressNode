@@ -1,0 +1,51 @@
+
+
+
+
+/*
+ Smoothing loading of app with a animation fadein.
+ Seems this is what the cool kids are doing this days ;)
+*/
+
+.smooth-load {
+    animation-duration: 1s;
+    animation-name: fadein;
+    animation-delay: 0.3s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-name: fadein;
+    -webkit-animation-delay: 0.3s;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-duration: 1s;
+    -moz-animation-name: fadein;
+    -moz-animation-delay: 0.3s;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+@-moz-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
