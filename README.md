@@ -10,6 +10,11 @@ Remember to replace my name with yours in the license
 
 Happy Hacking :)
 
+#TODO
+
+* Build script with Grunt
+* Tests Boilerplate
+* CI Boilerplate
 
 #License
 
