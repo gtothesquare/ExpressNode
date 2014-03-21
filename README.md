@@ -10,6 +10,10 @@ Remember to replace my name with yours in the license
 
 Happy Hacking :)
 
+#optional tools
+
+* ua-parser https://github.com/tobie/ua-parser#usage--nodejs
+
 #TODO
 
 * Build script with Grunt
