@@ -6,6 +6,31 @@ var express = require('express'),
   server = app.listen(port),
   io = require('socket.io').listen(server);
 
+
+/**
+ * socket io configuration
+ */
+io.configure('production', function(){
+  io.enable('browser client minification');  // send minified client
+  io.enable('browser client etag');          // apply etag caching logic based on version number
+  io.enable('browser client gzip');          // gzip the file
+  io.set('log level', 1);                    // reduce logging
+
+  // enable all transports
+  io.set('transports', [
+    'websocket' ,
+    'flashsocket',
+    'htmlfile',
+    'xhr-polling',
+    'jsonp-polling'
+  ]);
+
+});
+
+io.configure('development', function(){
+  io.set('transports', ['websocket']);
+});
+
 io.sockets.on('connection', function (socket) {
 
   socket.on('fromClient', function (data){
@@ -60,19 +85,22 @@ function errorHandler(err, req, res, next) {
 }
 
 app.configure(function(){
-  app.use(express.logger('dev'));
+  // is now a development only middleware
+  //https://github.com/senchalabs/connect/commit/a68b1c9b4389801c4c58c07fc91b65b19687d91c#lib/middleware/errorHandler.js
+  app.use(express.errorHandler());
   app.use(express.cookieParser());
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.static(__dirname + '/public'));
   app.use(app.router);
+  app.enable('trust proxy');
   app.use(logErrors);
   app.use(clientErrorHandler);
   app.use(errorHandler);
 });
 
-app.configure('development', function(){
-  app.use(express.errorHandler());
+app.configure('development', function() {
+  app.use(express.logger());
 });
 
 app.get('/', routes.index);
